@@ -23,11 +23,11 @@
   </head>
 
   <body>
-    {% comment %} <header class="header-global">
+    <header class="header-global">
       <nav
         id="navbar-main"
         aria-label="Primary navigation"
-        class="navbar navbar-main navbar-expand-lg navbar-theme-primary pt-4 navbar-dark"
+        class="navbar navbar-main navbar-expand-lg navbar-theme-primary pt-0 navbar-dark"
       >
         <div class="container position-relative">
           <div class="navbar-collapse collapse me-auto" id="navbar_global">
@@ -56,32 +56,46 @@
               </div>
             </div>
             <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
-              {% if request.user.is_authenticated %}
-              <li class="nav-item me-2">
-                <a href="{% url 'logout' %}" class="nav-link">Logout</a>
-              </li>
-              {% else %}
+				{% if request.user.is_authenticated %}
+				<!-- <li class="nav-item me-2">
+					<a href="{% url 'logout' %}" class="nav-link">Logout</a>
+				</li> -->
+				{% comment %} {% include 'pages/dashboard/dashboard.html' %} {% endcomment %}
+
+				<script>
+					window.location.href = "{% url 'dashboard' %}";
+				</script>
+
+			{% else %}
+				{% comment %}
+				{% if request.user.is_authenticated %}
+				{% endif %}
+				{% else %}
+				{% endcomment %}
+				<script>
+					window.location.href = "{% url 'login' %}";
+				</script>
+			{% endif %}
+			
               <li class="nav-item me-2">
                 <a href="{% url 'login' %}" class="nav-link">Login</a>
               </li>
               <li class="nav-item me-2">
                 <a href="{% url 'register' %}" class="nav-link">Register</a>
               </li>
-              {% endif %}
-              <li class="nav-item me-2">
+              
+              {% comment %} <li class="nav-item me-2">
                 <a href="{% url 'dashboard' %}" class="nav-link">Dashboard</a>
-              </li>
+              </li> {% endcomment %}
             </ul>
           </div>
         </div>
       </nav>
-    </header> {% endcomment %}
+    </header>
 
-    {% if request.user.is_authenticated %} 
-	{% include 'pages/dashboard/dashboard.html' %}
+   
 
-    <!-- Your code for handling unauthenticated users goes here -->
-    {% endif %}
+
 
     <footer class="footer py-6 bg-gray-800 text-white">
       <div class="container">
