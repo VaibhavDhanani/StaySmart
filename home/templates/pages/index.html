@@ -14,119 +14,220 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. Please contact us to request a removal. Contact us if you want to remove it.
 
 -->
+
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
+  <head>
+    {% include 'includes/head.html' %}
+  </head>
 
-<head>
-  {% include 'includes/head.html' %}
-</head>
-
-<body>
-  <header class="header-global">
-    <nav id="navbar-main" aria-label="Primary navigation"
-      class="navbar navbar-main navbar-expand-lg navbar-theme-primary pt-4 navbar-dark">
-      <div class="container position-relative">
-        <div class="navbar-collapse collapse me-auto" id="navbar_global">
-          <div class="navbar-collapse-header">
-            <div class="row">
-              <div class="col-6 collapse-brand">
-                <a href="{% url 'index' %}">
-                  <img src="{% static 'assets/img/brand/light.svg' %}" alt="Volt logo">
-                </a>
-              </div>
-              <div class="col-6 collapse-close">
-                <a href="#navbar_global" class="fas fa-times" data-toggle="collapse" data-target="#navbar_global"
-                  aria-controls="navbar_global" aria-expanded="false" title="close" aria-label="Toggle navigation"></a>
+  <body>
+    {% comment %} <header class="header-global">
+      <nav
+        id="navbar-main"
+        aria-label="Primary navigation"
+        class="navbar navbar-main navbar-expand-lg navbar-theme-primary pt-4 navbar-dark"
+      >
+        <div class="container position-relative">
+          <div class="navbar-collapse collapse me-auto" id="navbar_global">
+            <div class="navbar-collapse-header">
+              <div class="row">
+                <div class="col-6 collapse-brand">
+                  <a href="{% url 'index' %}">
+                    <img
+                      src="{% static 'assets/img/brand/light.svg' %}"
+                      alt="Volt logo"
+                    />
+                  </a>
+                </div>
+                <div class="col-6 collapse-close">
+                  <a
+                    href="#navbar_global"
+                    class="fas fa-times"
+                    data-toggle="collapse"
+                    data-target="#navbar_global"
+                    aria-controls="navbar_global"
+                    aria-expanded="false"
+                    title="close"
+                    aria-label="Toggle navigation"
+                  ></a>
+                </div>
               </div>
             </div>
-          </div>
-          <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
-            <li class="nav-item me-2">
-              <a href="{% url 'dashboard' %}" class="nav-link">Dashboard</a>
-            </li>
-            {% if request.user.is_authenticated %}
+            <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+              {% if request.user.is_authenticated %}
               <li class="nav-item me-2">
                 <a href="{% url 'logout' %}" class="nav-link">Logout</a>
               </li>
-            {% else %}
+              {% else %}
               <li class="nav-item me-2">
                 <a href="{% url 'login' %}" class="nav-link">Login</a>
               </li>
               <li class="nav-item me-2">
                 <a href="{% url 'register' %}" class="nav-link">Register</a>
               </li>
-            {% endif %}
-          </ul>
+              {% endif %}
+              <li class="nav-item me-2">
+                <a href="{% url 'dashboard' %}" class="nav-link">Dashboard</a>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
-    </nav>
-  </header>
+      </nav>
+    </header> {% endcomment %}
 
+    {% if request.user.is_authenticated %} 
+	{% include 'pages/dashboard/dashboard.html' %}
 
-  
+    <!-- Your code for handling unauthenticated users goes here -->
+    {% endif %}
 
-
-  <footer class="footer py-6 bg-gray-800 text-white">
-    <div class="container ">
-      <div class="row">
-        <div class="col-md-4">
-          <img class="navbar-brand-dark mb-4" height="35" src="{% static 'assets/img/brand/light.svg' %}" alt="Logo light">
-          <p>Our platform aims to assist students and accommodation providers in finding ideal housing solutions, catering to the preferences of students and the offerings of flat or hostel owners.</p>
-          <ul class="social-buttons mb-5 mb-lg-0">
-            <li>
-              <a href="https://twitter.com/themesberg" aria-label="twitter social link" class="icon-white me-2">
-                <span class="fab fa-twitter"></span>
-              </a>
-            </li>
-            <li>
-              <a href="https://www.facebook.com/themesberg/" class="icon-white me-2" aria-label="facebook social link">
-                <span class="fab fa-facebook"></span>
-              </a>
-            </li>
-            <li>
-              <a href="https://github.com/themesberg" aria-label="github social link" class="icon-white me-2">
-                <span class="fab fa-github"></span>
-              </a>
-            </li>
-            <li>
-              <a href="https://dribbble.com/themesberg" class="icon-white" aria-label="dribbble social link">
-                <span class="fab fa-dribbble"></span>
-              </a>
-            </li>
-          </ul>
+    <footer class="footer py-6 bg-gray-800 text-white">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <img
+              class="navbar-brand-dark mb-4"
+              height="35"
+              src="{% static 'assets/img/brand/light.svg' %}"
+              alt="Logo light"
+            />
+            <p>
+              Our platform aims to assist students and accommodation providers
+              in finding ideal housing solutions, catering to the preferences of
+              students and the offerings of flat or hostel owners.
+            </p>
+            <ul class="social-buttons mb-5 mb-lg-0">
+              <li>
+                <a
+                  href="https://twitter.com/themesberg"
+                  aria-label="twitter social link"
+                  class="icon-white me-2"
+                >
+                  <span class="fab fa-twitter"></span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.facebook.com/themesberg/"
+                  class="icon-white me-2"
+                  aria-label="facebook social link"
+                >
+                  <span class="fab fa-facebook"></span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://github.com/themesberg"
+                  aria-label="github social link"
+                  class="icon-white me-2"
+                >
+                  <span class="fab fa-github"></span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://dribbble.com/themesberg"
+                  class="icon-white"
+                  aria-label="dribbble social link"
+                >
+                  <span class="fab fa-dribbble"></span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-6 col-md-2 mb-5 mb-lg-0">
+            <span class="h5">SmartStay</span>
+            <ul class="links-vertical mt-2">
+              <li>
+                <a
+                  target="_blank"
+                  href="https://github.com/VaibhavDhanani/StaySmart"
+                  >GitHub</a
+                >
+              </li>
+              <li>
+                <a
+                  target="_blank"
+                  href="https://github.com/VaibhavDhanani/StaySmart"
+                  >YouTube</a
+                >
+              </li>
+              <li>
+                <a
+                  target="_blank"
+                  href="https://github.com/VaibhavDhanani/StaySmart"
+                  >LinkedIn</a
+                >
+              </li>
+              <li>
+                <a
+                  target="_blank"
+                  href="https://github.com/VaibhavDhanani/StaySmart"
+                  >Twitter</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="col-6 col-md-2 mb-5 mb-lg-0">
+            <span class="h5">Other</span>
+            <ul class="links-vertical mt-2">
+              <li>
+                <a
+                  href="https://github.com/app-generator/django-volt-dashboard"
+                  target="_blank"
+                  >Docs
+                  <span class="badge badge-sm bg-secondary text-dark ms-2"
+                    >v1.4</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://themesberg.com/docs/volt-bootstrap-5-dashboard/getting-started/changelog/"
+                  target="_blank"
+                  >Changelog</a
+                >
+              </li>
+              <li>
+                <a target="_blank" href="https://themesberg.com/licensing"
+                  >License</a
+                >
+              </li>
+              <li>
+                <a target="_blank" href="https://appseed.com/support"
+                  >Support</a
+                >
+              </li>
+            </ul>
+          </div>
         </div>
-        <div class="col-6 col-md-2 mb-5 mb-lg-0">
-          <span class="h5">SmartStay</span>
-          <ul class="links-vertical mt-2">
-            <li><a target="_blank" href="https://github.com/VaibhavDhanani/StaySmart">GitHub</a></li>
-            <li><a target="_blank" href="https://github.com/VaibhavDhanani/StaySmart">YouTube</a></li>
-            <li><a target="_blank" href="https://github.com/VaibhavDhanani/StaySmart">LinkedIn</a></li>
-            <li><a target="_blank" href="https://github.com/VaibhavDhanani/StaySmart">Twitter</a></li>
-          </ul>
-        </div>
-        <div class="col-6 col-md-2 mb-5 mb-lg-0">
-          <span class="h5">Other</span>
-          <ul class="links-vertical mt-2">
-            <li><a href="https://github.com/app-generator/django-volt-dashboard"
-                target="_blank">Docs
-                <span class="badge badge-sm bg-secondary text-dark ms-2">v1.4</span></a></li>
-            <li><a href="https://themesberg.com/docs/volt-bootstrap-5-dashboard/getting-started/changelog/"
-                target="_blank">Changelog</a></li>
-            <li><a target="_blank" href="https://themesberg.com/licensing">License</a>
-            </li>
-            <li><a target="_blank" href="https://appseed.com/support">Support</a></li>
-          </ul>
-        </div>
-      </div>
-      <hr class="bg-gray-700 my-5">
-      <div class="row">
-        <div class="col mb-md-0">
-          <a href="https://themesberg.com" target="_blank" class="d-flex justify-content-center">
-            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="5%"  viewBox="0 0 413 390" enable-background="new 0 0 413 390" xml:space="preserve">
-<path fill="#F8ECDC" opacity="1.000000" stroke="none"
-	d="
+        <hr class="bg-gray-700 my-5" />
+        <div class="row">
+          <div class="col mb-md-0">
+            <a
+              href="https://themesberg.com"
+              target="_blank"
+              class="d-flex justify-content-center"
+            >
+              <svg
+                version="1.1"
+                id="Layer_1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                x="0px"
+                y="0px"
+                width="5%"
+                viewBox="0 0 413 390"
+                enable-background="new 0 0 413 390"
+                xml:space="preserve"
+              >
+                <path
+                  fill="#F8ECDC"
+                  opacity="1.000000"
+                  stroke="none"
+                  d="
 M237.000000,391.000000 
 	C158.000000,391.000000 79.500000,391.000000 1.000000,391.000000 
 	C1.000000,261.000000 1.000000,131.000000 1.000000,1.000000 
@@ -197,9 +298,13 @@ M359.951202,38.961250
 	C345.610260,33.495850 344.362549,36.343475 343.976898,39.893841 
 	C343.462860,44.626514 345.256561,47.937889 349.982910,49.398136 
 	C355.843536,51.208824 360.000183,47.240395 359.951202,38.961250 
-z"/>
-<path fill="#23322E" opacity="1.000000" stroke="none" 
-	d="
+z"
+                />
+                <path
+                  fill="#23322E"
+                  opacity="1.000000"
+                  stroke="none"
+                  d="
 M59.241798,95.561295 
 	C70.484009,81.970978 84.703903,72.217033 100.213997,64.275230 
 	C119.291405,54.506809 139.723526,49.630749 161.038757,47.947449 
@@ -219,9 +324,13 @@ M59.241798,95.561295
 	C63.419598,215.100143 55.898987,204.077789 51.209530,191.190948 
 	C43.410229,169.758087 43.176540,147.869247 48.686939,126.028770 
 	C51.306488,115.646187 55.668907,105.703346 59.241798,95.561295 
-z"/>
-<path fill="#D96230" opacity="1.000000" stroke="none" 
-	d="
+z"
+                />
+                <path
+                  fill="#D96230"
+                  opacity="1.000000"
+                  stroke="none"
+                  d="
 M58.915260,95.491669 
 	C55.668907,105.703346 51.306488,115.646187 48.686939,126.028770 
 	C43.176540,147.869247 43.410229,169.758087 51.209530,191.190948 
@@ -237,9 +346,13 @@ M58.915260,95.491669
 	C34.052086,276.081482 25.085348,252.902893 20.603497,227.890671 
 	C14.239245,192.373199 18.161444,158.075806 36.135529,126.388077 
 	C42.387100,115.366768 51.035175,105.704826 58.915260,95.491669 
-z"/>
-<path fill="#325F6B" opacity="1.000000" stroke="none" 
-	d="
+z"
+                />
+                <path
+                  fill="#325F6B"
+                  opacity="1.000000"
+                  stroke="none"
+                  d="
 M172.881012,348.281006 
 	C171.808014,329.408112 170.830124,310.909027 170.096329,292.400238 
 	C169.920319,287.960693 170.555756,283.488922 171.286331,278.541229 
@@ -256,9 +369,13 @@ M172.881012,348.281006
 	C259.738159,367.480652 226.750992,382.940582 187.607819,385.308411 
 	C186.196762,385.393799 183.782883,383.438568 183.296600,381.955536 
 	C179.678665,370.922150 176.430099,359.767700 172.881012,348.281006 
-z"/>
-<path fill="#F7EDDD" opacity="1.000000" stroke="none" 
-	d="
+z"
+                />
+                <path
+                  fill="#F7EDDD"
+                  opacity="1.000000"
+                  stroke="none"
+                  d="
 M284.936890,226.789917 
 	C277.847046,220.639420 270.780914,214.055588 263.268341,207.048203 
 	C242.566376,193.425323 220.303223,187.429871 196.190170,187.915405 
@@ -293,9 +410,13 @@ M168.973663,150.467880
 	C171.835129,143.430084 169.976349,141.966827 169.282776,142.136963 
 	C167.153030,142.659332 163.752029,143.304825 163.373978,144.626022 
 	C162.403931,148.016174 164.051712,150.754196 168.973663,150.467880 
-z"/>
-<path fill="#D56333" opacity="1.000000" stroke="none" 
-	d="
+z"
+                />
+                <path
+                  fill="#D56333"
+                  opacity="1.000000"
+                  stroke="none"
+                  d="
 M286.511688,338.249268 
 	C288.572876,333.114044 291.022034,327.881622 293.327148,322.586517 
 	C307.501953,290.025513 305.030914,258.812469 285.548767,228.750534 
@@ -306,26 +427,38 @@ M286.511688,338.249268
 	C309.038605,164.445908 319.430237,187.992874 323.762238,214.076233 
 	C328.757629,244.154022 325.950012,273.466492 312.934174,301.353241 
 	C306.489899,315.160156 298.164062,327.734436 286.511688,338.249268 
-z"/>
-<path fill="#96C3BD" opacity="1.000000" stroke="none" 
-	d="
+z"
+                />
+                <path
+                  fill="#96C3BD"
+                  opacity="1.000000"
+                  stroke="none"
+                  d="
 M329.568085,47.608208 
 	C325.627472,49.780804 321.578796,50.849167 318.952667,47.043907 
 	C317.289429,44.633915 316.119324,40.571899 317.017609,38.074280 
 	C317.917969,35.570911 321.482758,32.953598 324.217377,32.521133 
 	C326.408569,32.174603 329.939178,34.456844 331.389862,36.585045 
 	C333.796234,40.115314 333.321533,44.196720 329.568085,47.608208 
-z"/>
-<path fill="#95C0BB" opacity="1.000000" stroke="none" 
-	d="
+z"
+                />
+                <path
+                  fill="#95C0BB"
+                  opacity="1.000000"
+                  stroke="none"
+                  d="
 M316.341492,67.522522 
 	C318.667389,61.790661 322.551208,59.666363 327.278381,61.234863 
 	C330.795288,62.401791 333.291779,67.034203 332.490570,70.906563 
 	C331.618530,75.121506 327.931458,78.038452 323.921570,77.685791 
 	C319.228088,77.273010 316.315521,73.568398 316.341492,67.522522 
-z"/>
-<path fill="#A7C5BC" opacity="1.000000" stroke="none" 
-	d="
+z"
+                />
+                <path
+                  fill="#A7C5BC"
+                  opacity="1.000000"
+                  stroke="none"
+                  d="
 M384.145630,62.875664 
 	C388.090820,65.213890 389.471222,70.613586 387.050201,74.237404 
 	C384.489899,78.069695 378.541382,79.149208 374.549072,76.506065 
@@ -336,9 +469,13 @@ M384.145630,62.875664
 	C372.986298,71.415749 376.020660,74.847618 379.214294,75.002327 
 	C383.987640,75.233574 385.140015,74.058411 384.971649,68.727760 
 	C384.909821,66.770317 384.433075,64.825981 384.145630,62.875664 
-z"/>
-<path fill="#A3C3BA" opacity="1.000000" stroke="none" 
-	d="
+z"
+                />
+                <path
+                  fill="#A3C3BA"
+                  opacity="1.000000"
+                  stroke="none"
+                  d="
 M349.008301,60.737835 
 	C355.377075,59.750061 359.321075,62.242661 360.000641,67.278046 
 	C360.788177,73.113564 358.373779,77.076477 352.649719,77.371765 
@@ -351,9 +488,13 @@ M356.778992,72.211014
 	C348.016479,64.420944 346.106476,67.136749 346.278046,68.833992 
 	C346.506744,71.097092 348.204376,73.996956 350.126434,75.026726 
 	C351.401001,75.709595 354.173920,73.595825 356.778992,72.211014 
-z"/>
-<path fill="#A3C2BA" opacity="1.000000" stroke="none" 
-	d="
+z"
+                />
+                <path
+                  fill="#A3C2BA"
+                  opacity="1.000000"
+                  stroke="none"
+                  d="
 M386.659607,46.403603 
 	C383.592957,49.988319 380.167755,50.979450 376.235809,48.980957 
 	C371.962524,46.808971 371.531311,42.874725 372.141510,38.739006 
@@ -365,9 +506,13 @@ M383.105225,36.181446
 	C373.619476,41.186020 373.248657,43.667332 376.231628,45.902016 
 	C379.210968,48.133987 381.425903,47.812447 384.124725,45.469551 
 	C387.938507,42.158688 385.990509,39.416351 383.105225,36.181446 
-z"/>
-<path fill="#A1C3B9" opacity="1.000000" stroke="none" 
-	d="
+z"
+                />
+                <path
+                  fill="#A1C3B9"
+                  opacity="1.000000"
+                  stroke="none"
+                  d="
 M359.979218,39.382103 
 	C360.000183,47.240395 355.843536,51.208824 349.982910,49.398136 
 	C345.256561,47.937889 343.462860,44.626514 343.976898,39.893841 
@@ -378,9 +523,13 @@ M350.020599,47.756435
 	C358.970367,41.918575 358.537140,38.794533 355.894379,35.965244 
 	C353.217743,33.099739 351.371155,34.271946 349.110291,35.939739 
 	C344.986084,38.982109 345.044220,41.449356 350.020599,47.756435 
-z"/>
-<path fill="#89BFBA" opacity="1.000000" stroke="none" 
-	d="
+z"
+                />
+                <path
+                  fill="#89BFBA"
+                  opacity="1.000000"
+                  stroke="none"
+                  d="
 M97.310844,133.858780 
 	C99.483345,161.152390 122.258408,178.309677 148.121902,184.053757 
 	C164.015335,187.583588 180.046249,188.240494 196.190170,187.915405 
@@ -393,17 +542,25 @@ M97.310844,133.858780
 	C134.823303,230.692200 107.370766,232.814499 80.080856,228.818954 
 	C79.947594,228.419495 79.814339,228.020020 79.590233,227.317841 
 	C76.273483,194.317062 81.173241,163.150543 97.310844,133.858780 
-z"/>
-<path fill="#F8ECDC" opacity="1.000000" stroke="none" 
-	d="
+z"
+                />
+                <path
+                  fill="#F8ECDC"
+                  opacity="1.000000"
+                  stroke="none"
+                  d="
 M138.674500,137.794647 
 	C138.926956,139.431580 138.854614,140.944000 138.782272,142.456436 
 	C136.941833,141.940140 135.101395,141.423843 132.306946,140.639908 
 	C134.668610,139.559555 135.789703,139.046707 136.955963,138.221695 
 	C137.450653,137.829742 137.900177,137.749954 138.674500,137.794647 
-z"/>
-<path fill="#F5EDDD" opacity="1.000000" stroke="none" 
-	d="
+z"
+                />
+                <path
+                  fill="#F5EDDD"
+                  opacity="1.000000"
+                  stroke="none"
+                  d="
 M80.119148,229.176208 
 	C107.370766,232.814499 134.823303,230.692200 162.199860,230.739731 
 	C180.107925,230.770798 197.286453,233.378738 213.482224,241.065292 
@@ -415,9 +572,13 @@ M80.119148,229.176208
 	C197.866440,278.050476 184.810547,278.050476 171.265045,278.123535 
 	C156.343170,277.099976 141.888397,276.184998 128.379166,270.152863 
 	C108.400551,261.232025 92.681160,247.287750 80.119148,229.176208 
-z"/>
-<path fill="#F8ECDC" opacity="1.000000" stroke="none" 
-	d="
+z"
+                />
+                <path
+                  fill="#F8ECDC"
+                  opacity="1.000000"
+                  stroke="none"
+                  d="
 M187.168976,157.107422 
 	C181.956512,159.739777 179.305237,158.287415 179.025833,152.988831 
 	C178.929825,151.168076 178.913818,149.315704 179.134933,147.511322 
@@ -427,17 +588,25 @@ M187.168976,157.107422
 	C204.608948,145.850174 201.840179,148.506439 199.922836,150.696091 
 	C199.314041,151.391342 197.348053,151.165283 196.068237,150.958267 
 	C191.268051,150.181839 188.446075,152.129776 187.168976,157.107422 
-z"/>
-<path fill="#F8ECDC" opacity="1.000000" stroke="none" 
-	d="
+z"
+                />
+                <path
+                  fill="#F8ECDC"
+                  opacity="1.000000"
+                  stroke="none"
+                  d="
 M168.617340,150.609772 
 	C164.051712,150.754196 162.403931,148.016174 163.373978,144.626022 
 	C163.752029,143.304825 167.153030,142.659332 169.282776,142.136963 
 	C169.976349,141.966827 171.835129,143.430084 171.750641,143.692810 
 	C171.005753,146.009293 169.942642,148.223450 168.617340,150.609772 
-z"/>
-<path fill="#92C3C1" opacity="1.000000" stroke="none" 
-	d="
+z"
+                />
+                <path
+                  fill="#92C3C1"
+                  opacity="1.000000"
+                  stroke="none"
+                  d="
 M384.075134,62.915054 
 	C384.433075,64.825981 384.909821,66.770317 384.971649,68.727760 
 	C385.140015,74.058411 383.987640,75.233574 379.214294,75.002327 
@@ -445,49 +614,63 @@ M384.075134,62.915054
 	C373.954651,64.419220 377.080688,62.063839 380.841522,62.769943 
 	C381.646393,62.921059 382.485809,62.887817 383.712891,62.887169 
 	C384.116425,62.834827 384.004608,62.954445 384.075134,62.915054 
-z"/>
-<path fill="#91C5C0" opacity="1.000000" stroke="none" 
-	d="
+z"
+                />
+                <path
+                  fill="#91C5C0"
+                  opacity="1.000000"
+                  stroke="none"
+                  d="
 M356.527527,72.472496 
 	C354.173920,73.595825 351.401001,75.709595 350.126434,75.026726 
 	C348.204376,73.996956 346.506744,71.097092 346.278046,68.833992 
 	C346.106476,67.136749 348.016479,64.420944 349.705170,63.586731 
 	C351.191254,62.852592 354.755890,63.447914 355.446320,64.614189 
 	C356.671661,66.684059 356.415405,69.631004 356.527527,72.472496 
-z"/>
-<path fill="#8DC1BD" opacity="1.000000" stroke="none" 
-	d="
+z"
+                />
+                <path
+                  fill="#8DC1BD"
+                  opacity="1.000000"
+                  stroke="none"
+                  d="
 M383.436920,36.354126 
 	C385.990509,39.416351 387.938507,42.158688 384.124725,45.469551 
 	C381.425903,47.812447 379.210968,48.133987 376.231628,45.902016 
 	C373.248657,43.667332 373.619476,41.186020 374.826569,38.451344 
 	C376.182465,35.379490 378.412384,34.195221 381.672699,35.753151 
 	C382.116974,35.965443 382.626129,36.042023 383.436920,36.354126 
-z"/>
-<path fill="#8EC2BE" opacity="1.000000" stroke="none" 
-	d="
+z"
+                />
+                <path
+                  fill="#8EC2BE"
+                  opacity="1.000000"
+                  stroke="none"
+                  d="
 M349.704163,47.546219 
 	C345.044220,41.449356 344.986084,38.982109 349.110291,35.939739 
 	C351.371155,34.271946 353.217743,33.099739 355.894379,35.965244 
 	C358.537140,38.794533 358.970367,41.918575 357.127045,44.394264 
 	C355.745361,46.249969 352.458954,46.687496 349.704163,47.546219 
-z"/>
-</svg>
-          </a>
-          <div class="d-flex text-center justify-content-center align-items-center" role="contentinfo">
-            <p class="fw-normal font-small mb-0">
-              &copy; All rights Reserved by StaySmart.
-            </p>
+z"
+                />
+              </svg>
+            </a>
+            <div
+              class="d-flex text-center justify-content-center align-items-center"
+              role="contentinfo"
+            >
+              <p class="fw-normal font-small mb-0">
+                &copy; All rights Reserved by StaySmart.
+              </p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </footer>
+    </footer>
 
-  <!-- Scripts -->
-  {% include 'includes/scripts.html' %}
-  <!-- End Scripts -->
-
-</body>
-
+    <!-- Scripts -->
+    {% include 'includes/scripts.html' %}
+    <!-- End Scripts -->
+  </body>
 </html>
