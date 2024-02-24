@@ -156,11 +156,12 @@
             aria-expanded="false">
             <div class="media d-flex align-items-center">
               <img class="avatar rounded-circle" alt="Image placeholder"
-                src="{% static 'assets/img/team/profile-picture-3.jpg' %}">
+                   src="{% static 'assets/img/team/profile-picture-3.jpg' %}">
               <div class="media-body ms-2 text-dark align-items-center d-none d-lg-block">
-                <span class="mb-0 font-small fw-bold text-gray-900">Admin</span>
+                  <span class="mb-0 text-lg fw-bold text-gray-900">{{ request.user.username }}</span>
               </div>
-            </div>
+          </div>
+          
           </a>
           <div class="dropdown-menu dashboard-dropdown dropdown-menu-end mt-2 py-1">
            {% comment %}  <a class="dropdown-item d-flex align-items-center" href="#">
