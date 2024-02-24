@@ -61,11 +61,16 @@
 					<a href="{% url 'logout' %}" class="nav-link">Logout</a>
 				</li> -->
 				{% comment %} {% include 'pages/dashboard/dashboard.html' %} {% endcomment %}
-
+        {% if request.user.is_superuser %}
+        <script>
+					window.location.href = "{% url 'admin:index' %}";
+				</script>
+        
+        {% else %}
 				<script>
 					window.location.href = "{% url 'dashboard' %}";
 				</script>
-
+        {% endif %}
 			{% else %}
 				{% comment %}
 				{% if request.user.is_authenticated %}
@@ -92,7 +97,7 @@
         </div>
       </nav>
     </header>
-
+{% comment %} 
     <footer class="footer py-6 bg-gray-800 text-white">
       <div class="container">
         <div class="row">
@@ -677,7 +682,7 @@ z"
           </div>
         </div>
       </div>
-    </footer>
+    </footer> {% endcomment %}
 
     <!-- Scripts -->
     {% include 'includes/scripts.html' %}

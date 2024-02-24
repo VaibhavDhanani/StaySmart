@@ -770,4 +770,8 @@
   </div> {% endcomment %}
 
 {% endblock content %}
+
+{% comment %} {% if request.user.is_superuser%}
+{% else %}
 {% include 'includes/footer.html' %}
+{% endif %} {% endcomment %}
