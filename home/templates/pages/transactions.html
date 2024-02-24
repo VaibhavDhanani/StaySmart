@@ -3,7 +3,17 @@
 
 {% block content %}
 
-  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
+
+<main class="container mx-auto">
+  
+  <section>
+      <h2 class="text-xl font-bold">Mission and Vision</h2>
+      <p>Our journey began with a simple yet profound mission: to revolutionize the way students find accommodation. Inspired by the challenges faced by students and the aspirations of PG and hostel owners, we embarked on a quest to create something extraordinary. Our platform isn't just about connecting people with places; it's about weaving together the stories of students searching for their perfect home and owners striving to showcase their properties. It's a tale of innovation, empowerment, and community-building, where every click brings us closer to a world where housing needs are effortlessly met, and connections are forged with trust and ease. Join us in this adventure as we redefine the landscape of student accommodation, one story at a time.</p>
+  </section>
+  
+</main>
+
+  {% comment %} <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
     <div class="d-block mb-4 mb-md-0">
       <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
         <ol class="breadcrumb breadcrumb-dark breadcrumb-transparent">
@@ -37,8 +47,8 @@
         <button type="button" class="btn btn-sm btn-outline-gray-600">Export</button>
       </div>
     </div>
-  </div>
-  <div class="table-settings mb-4">
+  </div> {% endcomment %}
+  {% comment %} <div class="table-settings mb-4">
     <div class="row align-items-center justify-content-between">
       <div class="col col-md-6 col-lg-3 col-xl-4">
         <div class="input-group me-2 me-lg-3 fmxw-400">
@@ -78,8 +88,8 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="card card-body border-0 shadow table-wrapper table-responsive">
+  </div> {% endcomment %}
+  {% comment %} <div class="card card-body border-0 shadow table-wrapper table-responsive">
     <table class="table table-hover">
       <thead>
         <tr>
@@ -444,6 +454,6 @@
       </nav>
       <div class="fw-normal small mt-4 mt-lg-0">Showing <b>5</b> out of <b>25</b> entries</div>
     </div>
-  </div>
+  </div> {% endcomment %}
 
 {% endblock content %}
