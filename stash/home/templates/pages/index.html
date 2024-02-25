@@ -1,0 +1,105 @@
+<!--
+
+=========================================================
+* Volt Free - Bootstrap 5 Dashboard
+=========================================================
+
+* Product Page: https://themesberg.com/product/admin-dashboard/volt-bootstrap-5-dashboard
+* Copyright 2021 Themesberg (https://www.themesberg.com)
+
+* Designed and coded by https://themesberg.com
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. Please contact us to request a removal. Contact us if you want to remove it.
+
+-->
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    {% include 'includes/head.html' %}
+  </head>
+
+  <body>
+    <header class="header-global">
+      <nav
+        id="navbar-main"
+        aria-label="Primary navigation"
+        class="navbar navbar-main navbar-expand-lg navbar-theme-primary pt-0 navbar-dark"
+      >
+        <div class="container position-relative">
+          <div class="navbar-collapse collapse me-auto" id="navbar_global">
+            <div class="navbar-collapse-header">
+              <div class="row">
+                <div class="col-6 collapse-brand">
+                  <a href="{% url 'index' %}">
+                    <img
+                      src="{% static 'assets/img/brand/light.svg' %}"
+                      alt="Volt logo"
+                    />
+                  </a>
+                </div>
+                <div class="col-6 collapse-close">
+                  <a
+                    href="#navbar_global"
+                    class="fas fa-times"
+                    data-toggle="collapse"
+                    data-target="#navbar_global"
+                    aria-controls="navbar_global"
+                    aria-expanded="false"
+                    title="close"
+                    aria-label="Toggle navigation"
+                  ></a>
+                </div>
+              </div>
+            </div>
+            <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+				{% if request.user.is_authenticated %}
+				<!-- <li class="nav-item me-2">
+					<a href="{% url 'logout' %}" class="nav-link">Logout</a>
+				</li> -->
+				{% comment %} {% include 'pages/dashboard/dashboard.html' %} {% endcomment %}
+        {% if request.user.is_superuser %}
+        <script>
+					window.location.href = "{% url 'admin:index' %}";
+				</script>
+        
+        {% else %}
+				<script>
+					window.location.href = "{% url 'dashboard' %}";
+				</script>
+        {% endif %}
+			{% else %}
+				{% comment %}
+				{% if request.user.is_authenticated %}
+				{% endif %}
+				{% else %}
+				{% endcomment %}
+				<script>
+					window.location.href = "{% url 'login' %}";
+				</script>
+			{% endif %}
+			
+              <li class="nav-item me-2">
+                <a href="{% url 'login' %}" class="nav-link">Login</a>
+              </li>
+              <li class="nav-item me-2">
+                <a href="{% url 'register' %}" class="nav-link">Register</a>
+              </li>
+              
+              {% comment %} <li class="nav-item me-2">
+                <a href="{% url 'dashboard' %}" class="nav-link">Dashboard</a>
+              </li> {% endcomment %}
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Scripts -->
+    {% include 'includes/scripts.html' %}
+    <!-- End Scripts -->
+  </body>
+</html>
