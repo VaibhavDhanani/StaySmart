@@ -58,7 +58,7 @@
       </li>
 
       {% admin_get_menu as app_list %}
-      {{ app_list}}
+      {% comment %} {{ app_list}} {% endcomment %}
       {% if app_list %}
         {% for app in app_list %}
           {% if app.has_perms and not app.pinned %}
