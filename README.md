@@ -170,5 +170,3 @@ This design is a pixel-perfect [Bootstrap 5](https://www.admin-dashboards.com/bo
 
 <br />
 
----
-[Django Volt Dashboard](https://appseed.us/product/volt-dashboard/django/) - **Django** starter provided by **[AppSeed](https://appseed.us/)**
