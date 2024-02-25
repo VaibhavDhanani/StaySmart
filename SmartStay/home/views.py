@@ -1,12 +1,11 @@
 from django.http import HttpResponse
-from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.shortcuts import render
 
-from django.contrib.auth import login, authenticate
+from home.models import CustomUser
 
 
 def index(request):
-    return render(request, 'singup.html')
+    return HttpResponse("why why")
 
 def signup_view(request):
     if request.method == 'POST':
