@@ -1,6 +1,7 @@
 {% load i18n static admin_volt %}
 
 <nav id="sidebarMenu" class="sidebar d-lg-block bg-gray-800 text-white collapse" data-simplebar>
+  aya ni avavanu
   <div class="sidebar-inner px-4 pt-3">
     <div class="user-card d-flex d-md-none align-items-center justify-content-between justify-content-md-center pb-4">
       <div class="d-flex align-items-center">
@@ -40,7 +41,7 @@
           <span class="mt-1 ms-1 sidebar-text">Volt Overview</span>
         </a>
       </li>
-
+     
       <li class="nav-item {% if 'dashboard' in segment %}active{% endif %}">
         {% if request.user.is_superuser %}
         <a href="{% url 'admin:index' %}" class="nav-link">
@@ -58,6 +59,8 @@
       </li>
 
       {% admin_get_menu as app_list %}
+
+      {{ app_list}} aya ni avavanu
       {% if app_list %}
         {% for app in app_list %}
           {% if app.has_perms and not app.pinned %}
