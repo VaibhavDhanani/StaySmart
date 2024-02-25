@@ -29,7 +29,7 @@
   {% endblock nav %}
 
   {% block sidebar %}
-    {% include 'includes/adminsidebar.html' %}
+    {% include 'includes/sidebar.html' %}
   {% endblock sidebar %}
 
   <main class="content">
@@ -43,9 +43,9 @@
       {% include 'includes/theme-settings.html' %}
     {% endblock theme_settings %}
 
-    {% comment %} {% block footer %}
+    {% block footer %}
       {% include 'includes/footer.html' %}
-    {% endblock footer %} {% endcomment %}
+    {% endblock footer %}
 
   </main>
 
